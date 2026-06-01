@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const noticias = [
+  { slug: 'nueva-linea-neurorehabilitacion', emoji: '🧠', cat: 'Investigación', titulo: 'Nueva línea de investigación en neurorehabilitación deportiva', fecha: '20 Mayo 2026', resumen: 'El GIAF anuncia la apertura de una nueva línea de trabajo en colaboración con la Facultad de Medicina.' },
+  { slug: 'congreso-fisioterapia', emoji: '🏆', cat: 'Congreso', titulo: 'Participación en el Congreso Nacional de Fisioterapia — Monterrey', fecha: '15 Mayo 2026', resumen: 'Miembros del GIAF presentaron ponencias sobre evaluación funcional del movimiento deportivo.' },
+  { slug: 'sesion-cadaver', emoji: '📸', cat: 'Galería', titulo: 'Primera sesión de cadáver: formación práctica del semestre', fecha: '5 Mayo 2026', resumen: 'Los miembros del grupo participaron en la primera práctica anatómica del ciclo escolar 2026.' },
+  { slug: 'publicacion-revista', emoji: '📄', cat: 'Publicación', titulo: 'Artículo aceptado en revista indexada Scopus', fecha: '28 Abril 2026', resumen: 'El GIAF logra su primera publicación en revista internacional de Ciencias del Movimiento Humano.' },
+  { slug: 'taller-opensim', emoji: '💻', cat: 'Formación', titulo: 'Taller de modelado musculoesquelético con OpenSim', fecha: '10 Abril 2026', resumen: 'Capacitación interna en software de análisis biomecánico para los miembros del grupo.' },
+  { slug: 'bienvenida-nuevos', emoji: '👥', cat: 'Comunidad', titulo: 'Bienvenida a los nuevos integrantes del semestre', fecha: '1 Abril 2026', resumen: 'El GIAF suma 6 nuevos estudiantes de LTFyRD y 2 de Medicina para el ciclo escolar agosto-diciembre 2026.' },
+];
+---
+
+<BaseLayout title="Noticias · GIAF UANL">
+
+  <section style="padding: 8rem 0 4rem; background: var(--bg2); border-bottom: 1px solid var(--border2);">
+    <div class="section-inner">
+      <p class="section-label">Noticias</p>
+      <h1 class="section-title">Lo Último del GIAF</h1>
+      <p class="section-desc">Eventos, logros, congresos y actividades del grupo. Mantente al tanto de lo que pasa en la comunidad.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="news-grid">
+        {noticias.map((n, i) => (
+          <a href={`/noticias/${n.slug}`} class={`news-card reveal reveal-delay-${(i % 3) + 1}`}>
+            <div class="news-card-img">{n.emoji}</div>
+            <div class="news-card-body">
+              <p class="news-cat">{n.cat}</p>
+              <h3>{n.titulo}</h3>
+              <p>{n.resumen}</p>
+              <div class="news-foot">
+                <span class="news-date">{n.fecha}</span>
+                <span class="news-read">Leer →</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

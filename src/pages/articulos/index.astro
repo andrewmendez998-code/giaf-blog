@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articulos = [
+  {
+    slug: 'tendon-aquiles-biomecanica',
+    title: 'Biomecánica del Tendón de Aquiles en Deportistas de Alto Rendimiento',
+    autor: 'GIAF Research Team',
+    fecha: '20 Mayo 2025',
+    categoria: 'Biomecánica',
+    tipo: 'Revisión Sistemática',
+    extracto: 'Una revisión sistemática de los patrones de carga y los mecanismos de lesión en el tendón de Aquiles durante actividad deportiva.',
+    emoji: '🦴',
+    lectura: '12 min',
+  },
+  {
+    slug: 'control-motor-futbol',
+    title: 'Control Motor y Estrategias Neuromusculares en Futbolistas Universitarios',
+    autor: 'Dr. Rodrigo Garza Cantú',
+    fecha: '5 Mayo 2025',
+    categoria: 'Neurociencia',
+    tipo: 'Investigación Original',
+    extracto: 'Evaluación electromiográfica de los patrones de activación muscular durante el gesto técnico del disparo en futbolistas de la UANL.',
+    emoji: '⚽',
+    lectura: '9 min',
+  },
+  {
+    slug: 'composicion-corporal-atletismo',
+    title: 'Composición Corporal y Rendimiento en Atletas de Pista y Campo',
+    autor: 'Dra. Ana Fernández Ruiz',
+    fecha: '18 Abril 2025',
+    categoria: 'Morfología',
+    tipo: 'Estudio Transversal',
+    extracto: 'Análisis de la composición corporal mediante DEXA en atletas universitarios de pista y campo, con correlaciones con marcas personales.',
+    emoji: '🏃',
+    lectura: '11 min',
+  },
+];
+---
+
+<BaseLayout title="Artículos · GIAF UANL">
+
+  <section style="padding: 8rem 0 4rem; background: var(--bg2); border-bottom: 1px solid var(--border2);">
+    <div class="section-inner">
+      <p class="section-label">Publicaciones</p>
+      <h1 class="section-title">Artículos e Investigaciones</h1>
+      <p class="section-desc">Producción científica del Grupo de Investigación en Anatomía Funcional. Acceso abierto para la comunidad académica.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div style="display:grid; gap:1.25rem;">
+        {articulos.map((art, i) => (
+          <a href={`/articulos/${art.slug}`} style="text-decoration:none; color:inherit;">
+            <article class={`feat-card reveal reveal-delay-${i}`} style="display:grid; grid-template-columns:80px 1fr; gap:0; border-radius:10px; overflow:hidden;">
+              <div class="feat-card-header" style="height:auto; font-size:2rem; min-height:100px;">{art.emoji}</div>
+              <div class="feat-card-body" style="display:flex; flex-direction:column; gap:.4rem;">
+                <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                  <span class="news-cat">{art.categoria}</span>
+                  <span class="feat-card-tag" style="position:static;">{art.tipo}</span>
+                </div>
+                <h2 style="font-family:var(--serif); font-size:1.25rem; color:#fff; line-height:1.25;">{art.title}</h2>
+                <p style="font-size:.82rem; color:var(--muted);">{art.extracto}</p>
+                <div style="display:flex; gap:1.5rem; margin-top:.25rem;">
+                  <span class="news-date">// {art.autor}</span>
+                  <span class="news-date">{art.fecha}</span>
+                  <span class="news-read">{art.lectura} lectura</span>
+                </div>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
