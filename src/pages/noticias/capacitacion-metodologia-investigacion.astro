@@ -1,0 +1,641 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const slides = [
+  {
+    src: '/noticias/metodologia-investigacion/01-intro.webp',
+    alt: 'Paolo Cano presenta el módulo de Metodología de la Investigación del GIAF',
+    title: 'Así arrancó el módulo',
+    text: 'Paolo Cano impartió la primera capacitación del programa: un recorrido por todo el proceso de investigación, pensado para que dejara de sentirse como una materia más.',
+    accent: '#dce8fb',
+  },
+  {
+    src: '/noticias/metodologia-investigacion/02-pasos.webp',
+    alt: 'Cinco pasos clave de toda investigación seria, según el método científico',
+    title: 'El método científico, en 5 pasos',
+    text: 'De la observación a la difusión: observación y problema, pregunta de investigación con PICO, hipótesis y diseño, recolección y análisis, y difusión científica.',
+    accent: '#cdddf8',
+  },
+  {
+    src: '/noticias/metodologia-investigacion/03-pico.webp',
+    alt: 'La estrategia PICO explicada en cuatro piezas: Población, Intervención, Comparación, Resultado',
+    title: 'La estrategia PICO',
+    text: 'Toda buena pregunta de investigación se puede romper en cuatro piezas: a quién estudias, qué evalúas, contra qué lo comparas y qué resultado mides.',
+    accent: '#1a4fa0',
+  },
+  {
+    src: '/noticias/metodologia-investigacion/04-cierre.webp',
+    alt: 'La IA apoya, no sustituye el criterio del investigador',
+    title: 'El cierre: el lugar de la IA',
+    text: 'La sesión cerró con una idea clara: la IA puede ayudarte a buscar y a redactar, pero nunca a diseñar tu metodología ni a interpretar tus resultados.',
+    accent: '#dce8fb',
+  },
+];
+---
+
+<BaseLayout title="GIAF capacita a su equipo en Metodología de la Investigación · GIAF UANL">
+
+  <section class="article-hero">
+    <div class="section-inner" style="max-width:760px;">
+      <p class="section-label">Noticias · Capacitación Académica</p>
+      <h1 class="section-title" style="font-size:clamp(2rem,5vw,3.1rem); max-width:100%;">
+        El GIAF arranca su ciclo de capacitaciones con Metodología de la Investigación
+      </h1>
+      <p style="font-size:.95rem; color:var(--text-2); line-height:1.85; max-width:620px; margin-top:1.25rem;">
+        La coordinación académica del grupo impartió la primera sesión de su programa de formación
+        para nuevos integrantes: un recorrido completo —y nada aburrido— por el proceso de
+        investigación científica, a cargo de <strong>Paolo Cano</strong>. Esto es lo que se vio.
+      </p>
+      <div style="display:flex; gap:2rem; flex-wrap:wrap; margin-top:1.5rem;">
+        <span style="font-family:var(--mono); font-size:.65rem; letter-spacing:.1em; color:var(--muted);">// Coordinación Académica GIAF</span>
+        <span style="font-family:var(--mono); font-size:.65rem; letter-spacing:.1em; color:var(--muted);">Junio 2026</span>
+        <span style="font-family:var(--mono); font-size:.65rem; letter-spacing:.1em; color:var(--blue-lt);">6 min lectura</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── CARRUSEL ───────── -->
+  <section style="padding: 2.5rem 0 1rem;">
+    <div class="ig-wide-wrap">
+      <div class="ig-carousel" id="igCarousel">
+        <div class="ig-glow" aria-hidden="true"></div>
+        <div class="ig-dotgrid" aria-hidden="true"></div>
+
+        <div class="ig-frame">
+          <div class="ig-progress"><span class="ig-progress-bar"></span></div>
+
+          <div class="ig-track">
+            {slides.map((s, i) => (
+              <figure class="ig-slide" data-index={i}>
+                <img src={s.src} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+              </figure>
+            ))}
+          </div>
+
+          <button class="ig-arrow ig-prev" aria-label="Diapositiva anterior" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="ig-arrow ig-next" aria-label="Siguiente diapositiva" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <div class="ig-hint" id="igHint">
+            <span>Desliza</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+
+        <div class="ig-caption">
+          <span class="ig-counter" id="igCounter"><b>01</b> / 04</span>
+          <div class="ig-caption-text" id="igCaptionText">
+            <p class="ig-caption-title">{slides[0].title}</p>
+            <p class="ig-caption-desc">{slides[0].text}</p>
+          </div>
+          <div class="ig-dots" id="igDots">
+            {slides.map((_, i) => (
+              <button class={`ig-dot ${i === 0 ? 'active' : ''}`} data-index={i} aria-label={`Ir a la diapositiva ${i + 1}`} type="button"></button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── CUERPO DEL ARTÍCULO ───────── -->
+  <div class="article-body">
+
+    <h2>De la curiosidad al protocolo</h2>
+    <p>El GIAF nació como un punto de encuentro entre estudiantes de la Facultad de Organización Deportiva (FOD) y de Medicina, con un objetivo claro: producir investigación de calidad en anatomía funcional y ciencias del movimiento. Pero antes de diseñar un proyecto, hace falta un lenguaje común — y eso fue justo lo que abrió este primer módulo de capacitación.</p>
+    <p>La sesión, a cargo de Paolo Cano desde la coordinación académica, planteó la investigación científica como <strong>el proceso mediante el cual se genera nuevo conocimiento y se valida el existente</strong>, y recordó algo que aplica directo a la práctica clínica: en ciencias de la salud, las decisiones modernas deben sustentarse en evidencia de calidad. Identificar problemas, formular preguntas, buscar evidencia, diseñar proyectos, interpretar resultados y comunicar hallazgos: ese es, en resumen, el trabajo de un investigador.</p>
+
+    <h2>El método científico, en 10 pasos</h2>
+    <p>El núcleo del módulo fue desglosar el método científico en una secuencia que cualquier proyecto del GIAF debería poder seguir, sin saltarse pasos:</p>
+    <ol>
+      <li><strong>Observación</strong> — todo arranca con algo que llama la atención.</li>
+      <li><strong>Identificación del problema</strong> — convertir esa observación en una pregunta incómoda.</li>
+      <li><strong>Pregunta de investigación</strong> — aquí entra la estrategia PICO.</li>
+      <li><strong>Revisión de literatura</strong> — ver qué se sabe (y qué no) hasta ahora.</li>
+      <li><strong>Hipótesis</strong> — una respuesta tentativa, puesta a prueba.</li>
+      <li><strong>Diseño metodológico</strong> — el plan antes de salir a campo.</li>
+      <li><strong>Recolección de datos</strong> — donde la teoría se encuentra con la realidad.</li>
+      <li><strong>Análisis</strong> — donde la evidencia toma forma.</li>
+      <li><strong>Conclusiones</strong> — qué responde (y qué no) la evidencia obtenida.</li>
+      <li><strong>Difusión científica</strong> — porque de nada sirve investigar si no se comunica.</li>
+    </ol>
+
+    <h2>No toda investigación se hace igual</h2>
+    <p>Otro bloque importante fue distinguir entre los <strong>tipos de investigación</strong>: la básica busca comprender principios y fenómenos sin una aplicación inmediata, mientras que la aplicada apunta a resolver problemas concretos del ámbito clínico o de salud pública. A esto se suman los enfoques cuantitativo (datos numéricos y análisis estadístico, pensado para generalizar resultados), cualitativo (percepciones, significados y experiencias mediante entrevistas o grupos focales) y mixto, que combina ambos para una comprensión más completa.</p>
+    <p>Sobre esa base se construyen los <strong>diseños de estudio</strong>. Los <em>observacionales</em> —donde el investigador no interviene en la exposición de los sujetos— incluyen los transversales (una sola medición en el tiempo), los de cohortes (siguen grupos con distinta exposición hacia el futuro) y los de casos y controles (comparan personas con la enfermedad contra personas sin ella). Los <em>experimentales</em>, en cambio, parten de que el investigador asigna activamente la intervención; el ensayo clínico aleatorizado es el estándar de oro, porque la asignación al azar minimiza sesgos y permite hablar de causalidad.</p>
+
+    <h2>La jerarquía de la evidencia: no toda pesa igual</h2>
+    <p>Uno de los conceptos que más cuesta interiorizar al inicio es que no toda la evidencia científica tiene el mismo peso. La capacitación presentó la pirámide clásica de la evidencia, de menor a mayor solidez: reportes de caso y opinión de expertos, estudios transversales, estudios de casos y controles, estudios de cohortes, ensayos clínicos aleatorizados y, en la cima, las revisiones sistemáticas y metaanálisis.</p>
+    <p>Entender este orden no es solo un ejercicio académico: define qué tan firmes pueden ser las conclusiones de un estudio y, en la práctica clínica, qué tan seguros podemos estar al aplicar un hallazgo con un paciente real.</p>
+
+    <h2>PICO: tu pregunta, en cuatro piezas</h2>
+    <p>Una de las herramientas más prácticas que se revisaron fue la estrategia <strong>PICO</strong>, pensada para que cualquier pregunta de investigación quede bien planteada desde el principio:</p>
+    <ul>
+      <li><strong>P · Población</strong> — ¿a quién estudias? Define al paciente o grupo.</li>
+      <li><strong>I · Intervención</strong> — ¿qué evalúas? Un tratamiento, una prueba o una exposición.</li>
+      <li><strong>C · Comparación</strong> — ¿contra qué? Puede ser un placebo u otra alternativa.</li>
+      <li><strong>O · Outcome (resultado)</strong> — ¿qué desenlace mides? El resultado clave de tu estudio.</li>
+    </ul>
+    <p>Si alguna de estas cuatro piezas no está clara, lo más probable es que la pregunta todavía esté demasiado abierta para convertirse en un proyecto.</p>
+
+    <h2>De la pregunta al artículo: buscar y leer bien</h2>
+    <p>Con la pregunta definida, el siguiente reto es encontrar literatura relevante sin perderse en el intento. La sesión repasó las bases de datos de referencia para ciencias de la salud — PubMed, Scopus, Web of Science, SciELO, Cochrane Library y Google Scholar — junto con los operadores booleanos básicos: <strong>AND</strong> para unir conceptos, <strong>OR</strong> para ampliar la búsqueda y <strong>NOT</strong> para excluir términos. También se habló de los términos MeSH, el vocabulario controlado de PubMed que estandariza la terminología médica para obtener búsquedas más precisas y reproducibles.</p>
+    <p>Pero encontrar artículos es solo la mitad del trabajo. Para la lectura crítica, se propuso un filtro de cinco preguntas: ¿el título es relevante para mi pregunta?, ¿el resumen tiene un diseño y resultados pertinentes?, ¿la metodología es sólida, controla sesgos y es reproducible?, ¿aplica al contexto de mi investigación? y, finalmente, ¿los resultados son válidos, significativos y aplicables?</p>
+
+    <h2>El protocolo: el mapa completo de un proyecto</h2>
+    <p>Como cierre de la parte metodológica, se presentó la estructura general que debería tener cualquier protocolo de investigación del grupo: título, problema, justificación, pregunta de investigación, objetivos, hipótesis, marco teórico, metodología, variables, consideraciones éticas, cronograma y referencias. Doce piezas que, juntas, convierten una idea en un proyecto que se puede ejecutar, evaluar y replicar.</p>
+
+    <h2>Bioestadística, ética... y el lugar de la IA</h2>
+    <p>El módulo cerró con una serie de temas complementarios que acompañarán al resto del ciclo de capacitaciones: gestores bibliográficos como Zotero, Mendeley y EndNote junto con las normas APA, Vancouver y AMA; nociones básicas de bioestadística (análisis descriptivo e inferencial, p-valor e intervalos de confianza); ética en investigación, con el consentimiento informado y la Declaración de Helsinki como referencias obligadas; herramientas de lectura crítica avanzada como GRADE, CONSORT y PRISMA; y redacción científica bajo la estructura IMRyD.</p>
+
+    <p>Y, por supuesto, el tema que nadie quería dejar fuera: <strong>el uso responsable de la inteligencia artificial</strong> en investigación.</p>
+
+    <div class="ia-box">
+      <div class="ia-col ia-col-yes">
+        <p class="ia-col-title">✓ Puede apoyar</p>
+        <ul>
+          <li>Búsqueda y síntesis de literatura</li>
+          <li>Revisión de redacción y gramática</li>
+          <li>Generación de ideas iniciales</li>
+          <li>Análisis exploratorio de datos</li>
+        </ul>
+      </div>
+      <div class="ia-col ia-col-no">
+        <p class="ia-col-title">✗ No sustituye</p>
+        <ul>
+          <li>El diseño metodológico riguroso</li>
+          <li>La interpretación científica crítica</li>
+          <li>La responsabilidad ética del investigador</li>
+          <li>La validación y autoría del trabajo</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote>
+      "Antes de producir conocimiento es necesario aprender a comprenderlo, buscarlo y analizarlo."
+    </blockquote>
+
+    <h2>Lo que sigue</h2>
+    <p>Esta primera sesión marca el inicio del ciclo de capacitaciones de la coordinación académica del GIAF, pensado para nivelar a todo el equipo —sin importar si vienen de FOD o de Medicina— en las bases de la investigación científica antes de lanzarse de lleno a sus propios proyectos. Próximamente compartiremos las siguientes sesiones del programa.</p>
+
+    <div style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border-lt);">
+      <p style="font-family:var(--mono); font-size:.65rem; letter-spacing:.15em; color:var(--muted); margin-bottom:.5rem;">FUENTE</p>
+      <p style="font-size:.78rem; color:var(--muted); line-height:1.8;">
+        Material de capacitación "Metodología de la Investigación" · Coordinación Académica, GIAF — Grupo de Investigación en Anatomía Funcional, UANL.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="section-inner" style="max-width:760px; padding-bottom:5rem;">
+    <div class="noticias-ig-banner">
+      <div class="ig-banner-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="ig-banner-title">Síguenos en Instagram</p>
+        <p class="ig-banner-sub">Más fotos de esta capacitación y de las próximas sesiones del ciclo, en tiempo real.</p>
+      </div>
+      <a href="https://instagram.com/giaf.uanl" target="_blank" rel="noopener" class="btn-primary ig-banner-btn">@giaf.uanl →</a>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* ───────── CONTENEDOR ANCHO (rompe el ancho de columna, edge-to-edge) ───────── */
+  .ig-wide-wrap {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0 1.25rem;
+  }
+
+  /* ───────── CARRUSEL ───────── */
+  .ig-carousel {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .ig-glow {
+    position: absolute;
+    inset: -10% -6%;
+    z-index: -1;
+    border-radius: 32px;
+    background: radial-gradient(circle at 28% 30%, var(--blue-pale) 0%, transparent 62%);
+    filter: blur(36px);
+    opacity: .8;
+    transition: background 0.7s ease;
+    pointer-events: none;
+  }
+
+  .ig-dotgrid {
+    position: absolute;
+    top: -18px; right: -18px;
+    width: 110px; height: 110px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .35;
+    background-image: radial-gradient(var(--blue-lt) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+    transition: transform .6s cubic-bezier(.4,0,.2,1);
+  }
+
+  .ig-frame {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    aspect-ratio: 1400 / 787;
+    background: var(--navy);
+    box-shadow: 0 30px 80px -16px rgba(12,31,63,.28);
+    border: 1px solid var(--border-lt);
+  }
+
+  .ig-progress {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: rgba(255,255,255,.18);
+    z-index: 6;
+  }
+  .ig-progress-bar {
+    display: block;
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(90deg, var(--blue-lt), var(--blue));
+    transition: width .65s cubic-bezier(.4,0,.2,1);
+  }
+
+  .ig-track {
+    display: flex;
+    height: 100%;
+    transition: transform .65s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+
+  .ig-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .ig-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.001) translate3d(0,0,0);
+    transition: transform .5s cubic-bezier(.2,.6,.3,1);
+    will-change: transform;
+  }
+
+  .ig-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    border: 1px solid var(--border-lt);
+    background: rgba(255,255,255,.92);
+    color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 6px 20px rgba(12,31,63,.18);
+    transition: background .2s, color .2s, transform .2s, box-shadow .2s;
+    z-index: 6;
+  }
+  .ig-arrow svg { width: 22px; height: 22px; }
+  .ig-arrow:hover {
+    background: var(--blue);
+    color: #fff;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 8px 24px rgba(26,79,160,.35);
+  }
+  .ig-arrow:active { transform: translateY(-50%) scale(.96); }
+  .ig-prev { left: 20px; }
+  .ig-next { right: 20px; }
+
+  .ig-hint {
+    position: absolute;
+    right: 22px; bottom: 22px;
+    display: flex; align-items: center; gap: .4rem;
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: rgba(255,255,255,.9);
+    padding: .55rem .95rem;
+    border-radius: 99px;
+    box-shadow: 0 6px 18px rgba(12,31,63,.16);
+    z-index: 6;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity .5s ease, transform .5s ease;
+    pointer-events: none;
+  }
+  .ig-hint.is-hidden { opacity: 0; transform: translateX(8px); }
+  .ig-hint svg { animation: ig-hint-move 1.6s ease-in-out infinite; }
+
+  @keyframes ig-hint-move {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+
+  .ig-caption {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 1.75rem;
+  }
+  .ig-counter {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.6rem;
+    letter-spacing: .02em;
+    color: var(--blue-pale);
+    padding-top: 0;
+    white-space: nowrap;
+    line-height: 1;
+    transition: color .3s ease;
+  }
+  .ig-counter b { color: var(--blue); font-size: 1.6rem; }
+  .ig-caption-text {
+    overflow: hidden;
+  }
+  .ig-caption-text.ig-out-left  { animation: ig-out-left .22s ease forwards; }
+  .ig-caption-text.ig-out-right { animation: ig-out-right .22s ease forwards; }
+  .ig-caption-text.ig-in-left   { animation: ig-in-left .4s cubic-bezier(.22,.61,.36,1) forwards; }
+  .ig-caption-text.ig-in-right  { animation: ig-in-right .4s cubic-bezier(.22,.61,.36,1) forwards; }
+
+  @keyframes ig-out-left  { to { opacity: 0; transform: translateX(-26px); } }
+  @keyframes ig-out-right { to { opacity: 0; transform: translateX(26px); } }
+  @keyframes ig-in-left   { from { opacity: 0; transform: translateX(26px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes ig-in-right  { from { opacity: 0; transform: translateX(-26px); } to { opacity: 1; transform: translateX(0); } }
+
+  .ig-caption-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.45rem;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: .4rem;
+    display: inline-block;
+    position: relative;
+    transition: color .25s ease;
+    cursor: default;
+  }
+  .ig-caption-title::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -3px;
+    width: 0; height: 2px;
+    background: var(--blue-lt);
+    transition: width .35s cubic-bezier(.22,.61,.36,1);
+  }
+  .ig-caption-title:hover {
+    color: var(--blue);
+  }
+  .ig-caption-title:hover::after {
+    width: 100%;
+  }
+  .ig-caption-desc {
+    font-size: .92rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  .ig-dots {
+    display: flex;
+    gap: .55rem;
+    padding-top: .55rem;
+  }
+  .ig-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    padding: 0;
+    transition: background .25s, transform .25s, width .25s;
+  }
+  .ig-dot:hover { background: var(--blue-lt); }
+  .ig-dot.active {
+    background: var(--blue);
+    width: 26px;
+    border-radius: 99px;
+  }
+
+  @media (max-width: 640px) {
+    .ig-caption {
+      grid-template-columns: 1fr;
+      gap: .75rem;
+    }
+    .ig-counter { font-size: 1.2rem; }
+    .ig-caption-title { font-size: 1.15rem; }
+    .ig-caption-desc { font-size: .85rem; }
+    .ig-dots { order: -1; }
+    .ig-arrow { width: 40px; height: 40px; }
+    .ig-arrow svg { width: 18px; height: 18px; }
+    .ig-hint { font-size: .58rem; padding: .4rem .7rem; }
+  }
+
+  /* ───────── BOX IA ───────── */
+  .ia-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .ia-col {
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border-lt);
+  }
+  .ia-col-yes { border-left: 3px solid #2f9e5b; background: rgba(47,158,91,.05); }
+  .ia-col-no  { border-left: 3px solid #d9534f; background: rgba(217,83,79,.05); }
+  .ia-col-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: .95rem;
+    margin-bottom: .6rem;
+    color: var(--navy);
+  }
+  .ia-col ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+  .ia-col li {
+    font-size: .82rem;
+    color: var(--text-2);
+    line-height: 1.7;
+    padding-left: 1.1rem;
+    position: relative;
+    margin-bottom: .3rem;
+  }
+  .ia-col li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: .68rem;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue-lt);
+  }
+
+  @media (max-width: 640px) {
+    .ia-box { grid-template-columns: 1fr; }
+  }
+
+  /* ───────── BANNER INSTAGRAM ───────── */
+  .noticias-ig-banner {
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 2rem 2.5rem;
+    color: white;
+  }
+  .ig-banner-icon { color: rgba(255,255,255,.7); flex-shrink: 0; }
+  .ig-banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; margin-bottom: .25rem;
+  }
+  .ig-banner-sub { font-size: .84rem; color: rgba(255,255,255,.6); }
+  .ig-banner-btn { margin-left: auto; white-space: nowrap; }
+
+  @media (max-width: 600px) {
+    .noticias-ig-banner { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+    .ig-banner-btn { margin-left: 0; width: 100%; text-align: center; }
+  }
+</style>
+
+<script>
+  (function () {
+    const carousel = document.getElementById('igCarousel');
+    if (!carousel) return;
+
+    const track    = carousel.querySelector('.ig-track');
+    const frame    = carousel.querySelector('.ig-frame');
+    const slides   = Array.from(carousel.querySelectorAll('.ig-slide'));
+    const dots     = Array.from(carousel.querySelectorAll('.ig-dot'));
+    const prevBtn  = carousel.querySelector('.ig-prev');
+    const nextBtn  = carousel.querySelector('.ig-next');
+    const progress = carousel.querySelector('.ig-progress-bar');
+    const counter  = document.getElementById('igCounter');
+    const captionWrap = document.getElementById('igCaptionText');
+    const hint     = document.getElementById('igHint');
+    const glow     = carousel.querySelector('.ig-glow');
+    const dotgrid  = carousel.querySelector('.ig-dotgrid');
+
+    const data = [
+      { title: "Así arrancó el módulo", text: "Paolo Cano impartió la primera capacitación del programa: un recorrido por todo el proceso de investigación, pensado para que dejara de sentirse como una materia más." },
+      { title: "El método científico, en 5 pasos", text: "De la observación a la difusión: observación y problema, pregunta de investigación con PICO, hipótesis y diseño, recolección y análisis, y difusión científica." },
+      { title: "La estrategia PICO", text: "Toda buena pregunta de investigación se puede romper en cuatro piezas: a quién estudias, qué evalúas, contra qué lo comparas y qué resultado mides." },
+      { title: "El cierre: el lugar de la IA", text: "La sesión cerró con una idea clara: la IA puede ayudarte a buscar y a redactar, pero nunca a diseñar tu metodología ni a interpretar tus resultados." },
+    ];
+
+    const total = slides.length;
+    let index = 0;
+    let timer = null;
+    let hintHidden = false;
+
+    function hideHint() {
+      if (hintHidden) return;
+      hintHidden = true;
+      hint?.classList.add('is-hidden');
+    }
+
+    function render(direction) {
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+      const n = String(index + 1).padStart(2, '0');
+      const t = String(total).padStart(2, '0');
+      if (counter) counter.innerHTML = `<b>${n}</b> / ${t}`;
+
+      if (progress) progress.style.width = `${((index + 1) / total) * 100}%`;
+
+      if (captionWrap) {
+        const dir = direction || 1;
+        const outClass = dir < 0 ? 'ig-out-right' : 'ig-out-left';
+        const inClass  = dir < 0 ? 'ig-in-right'  : 'ig-in-left';
+        captionWrap.className = `ig-caption-text ${outClass}`;
+        setTimeout(() => {
+          const d = data[index];
+          captionWrap.innerHTML = `<p class="ig-caption-title">${d.title}</p><p class="ig-caption-desc">${d.text}</p>`;
+          captionWrap.className = `ig-caption-text ${inClass}`;
+        }, 200);
+      }
+
+      if (glow) {
+        const positions = ['28% 30%', '70% 25%', '50% 60%', '30% 65%'];
+        glow.style.background = `radial-gradient(circle at ${positions[index]}, var(--blue-pale) 0%, transparent 62%)`;
+      }
+    }
+
+    function goTo(i, userInitiated) {
+      const prevIndex = index;
+      index = ((i % total) + total) % total;
+      let direction = 1;
+      if (prevIndex === total - 1 && index === 0) direction = 1;       // next, wrap to start
+      else if (prevIndex === 0 && index === total - 1) direction = -1; // prev, wrap to end
+      else direction = index >= prevIndex ? 1 : -1;
+      render(direction);
+      if (userInitiated) {
+        hideHint();
+        restart();
+      }
+    }
+
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => goTo(index + 1, false), 6500);
+    }
+
+    nextBtn?.addEventListener('click', () => goTo(index + 1, true));
+    prevBtn?.addEventListener('click', () => goTo(index - 1, true));
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i, true)));
+
+    /* Pausa el autoplay mientras el cursor está sobre el carrusel */
+    carousel.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
+    carousel.addEventListener('mouseleave', () => { restart(); resetParallax(); });
+
+    /* Parallax sutil sobre la imagen activa y el patrón de puntos */
+    function resetParallax() {
+      const img = slides[index]?.querySelector('img');
+      if (img) img.style.transform = '';
+      if (dotgrid) dotgrid.style.transform = '';
+    }
+
+    frame?.addEventListener('mousemove', (e) => {
+      const rect = frame.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const img = slides[index]?.querySelector('img');
+      if (img) img.style.transform = `scale(1.012) translate3d(${x * -6}px, ${y * -4}px, 0)`;
+      if (dotgrid) dotgrid.style.transform = `translate3d(${x * 8}px, ${y * 6}px, 0)`;
+    });
+    frame?.addEventListener('mouseleave', resetParallax);
+
+    /* Soporte táctil: deslizar para cambiar de diapositiva */
+    let touchStartX = 0;
+    frame?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    frame?.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        goTo(index + (dx < 0 ? 1 : -1), true);
+      }
+    }, { passive: true });
+
+    /* Navegación con teclado cuando el carrusel tiene foco */
+    carousel.setAttribute('tabindex', '0');
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') goTo(index + 1, true);
+      if (e.key === 'ArrowLeft') goTo(index - 1, true);
+    });
+
+    render();
+    restart();
+  })();
+</script>

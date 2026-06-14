@@ -2,12 +2,50 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const noticias = [
-  { slug: 'nueva-linea-neurorehabilitacion', emoji: '🧠', cat: 'Investigación', titulo: 'Nueva línea de investigación en neurorehabilitación deportiva', fecha: '20 Mayo 2026', resumen: 'El GIAF anuncia la apertura de una nueva línea de trabajo en colaboración con la Facultad de Medicina.' },
-  { slug: 'congreso-fisioterapia', emoji: '🏆', cat: 'Congreso', titulo: 'Participación en el Congreso Nacional de Fisioterapia — Monterrey', fecha: '15 Mayo 2026', resumen: 'Miembros del GIAF presentaron ponencias sobre evaluación funcional del movimiento deportivo.' },
-  { slug: 'sesion-cadaver', emoji: '📸', cat: 'Galería', titulo: 'Primera sesión de cadáver: formación práctica del semestre', fecha: '5 Mayo 2026', resumen: 'Los miembros del grupo participaron en la primera práctica anatómica del ciclo escolar 2026.' },
-  { slug: 'publicacion-revista', emoji: '📄', cat: 'Publicación', titulo: 'Artículo aceptado en revista indexada Scopus', fecha: '28 Abril 2026', resumen: 'El GIAF logra su primera publicación en revista internacional de Ciencias del Movimiento Humano.' },
-  { slug: 'taller-opensim', emoji: '💻', cat: 'Formación', titulo: 'Taller de modelado musculoesquelético con OpenSim', fecha: '10 Abril 2026', resumen: 'Capacitación interna en software de análisis biomecánico para los miembros del grupo.' },
-  { slug: 'bienvenida-nuevos', emoji: '👥', cat: 'Comunidad', titulo: 'Bienvenida a los nuevos integrantes del semestre', fecha: '1 Abril 2026', resumen: 'El GIAF suma 6 nuevos estudiantes de LTFyRD y 2 de Medicina para el ciclo escolar agosto-diciembre 2026.' },
+  {
+    slug: 'capacitacion-metodologia-investigacion',
+    img: '/noticias/metodologia-investigacion/01-intro.webp',
+    imgs: [
+      '/noticias/metodologia-investigacion/01-intro.webp',
+      '/noticias/metodologia-investigacion/02-pasos.webp',
+      '/noticias/metodologia-investigacion/03-pico.webp',
+      '/noticias/metodologia-investigacion/04-cierre.webp',
+    ],
+    cat: 'Capacitación',
+    titulo: 'GIAF arranca su ciclo de capacitaciones con Metodología de la Investigación',
+    fecha: 'Junio 2026',
+    resumen: 'Paolo Cano impartió la primera sesión del programa formativo: un recorrido completo —y nada aburrido— por el método científico, PICO, búsqueda bibliográfica y el rol de la IA en investigación.',
+    real: true,
+    link: '/noticias/capacitacion-metodologia-investigacion',
+    linkText: 'Leer noticia →',
+  },
+  {
+    slug: 'nueva-pagina-giaf',
+    emoji: '🌐',
+    cat: 'Comunidad',
+    titulo: 'GIAF estrena sitio web oficial',
+    fecha: 'Junio 2026',
+    resumen: 'El grupo lanza su primera plataforma digital para centralizar proyectos, artículos y noticias del grupo. Un espacio abierto para estudiantes, investigadores y profesionales del área de la salud.',
+    real: true,
+  },
+  {
+    slug: 'buscador-articulos',
+    emoji: '🔍',
+    cat: 'Tecnología',
+    titulo: 'En desarrollo: buscador de artículos científicos integrado',
+    fecha: 'Próximamente',
+    resumen: 'El GIAF trabaja en integrar un buscador de literatura científica directamente en la plataforma, con filtros por área temática, tipo de estudio y año de publicación. El objetivo es facilitar el acceso a evidencia clínica relevante para estudiantes y profesionales de fisioterapia y medicina.',
+    real: true,
+  },
+  {
+    slug: 'proximamente-1',
+    emoji: '📌',
+    cat: 'Próximamente',
+    titulo: 'Más noticias en camino',
+    fecha: '—',
+    resumen: 'El GIAF está comenzando actividades. Pronto compartiremos eventos, talleres, sesiones académicas y resultados de los proyectos en curso. Síguenos en Instagram para novedades en tiempo real.',
+    real: false,
+  },
 ];
 ---
 
@@ -17,29 +55,94 @@ const noticias = [
     <div class="section-inner">
       <p class="section-label">Noticias</p>
       <h1 class="section-title">Lo Último del GIAF</h1>
-      <p class="section-desc">Eventos, logros, congresos y actividades del grupo. Mantente al tanto de lo que pasa en la comunidad.</p>
+      <p class="section-desc">Actualizaciones, avances y próximas actividades del grupo. Estamos comenzando — mantente al pendiente.</p>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <div class="news-grid">
+      <div class="news-grid" style="margin-top:3rem;">
         {noticias.map((n, i) => (
-          <a href={`/noticias/${n.slug}`} class={`news-card reveal reveal-delay-${(i % 3) + 1}`}>
-            <div class="news-card-img">{n.emoji}</div>
+          <div class={`news-card reveal reveal-delay-${(i % 3) + 1} ${!n.real ? 'news-card-placeholder' : ''}`}>
+            <div class="news-card-img" class:list={[(n.img || n.imgs) ? 'has-img' : '']}>
+              {n.imgs
+                ? <div class="auto-slideshow">{n.imgs.map((src) => <img src={src} alt={n.titulo} loading="lazy" />)}</div>
+                : n.img ? <img src={n.img} alt={n.titulo} loading="lazy" /> : n.emoji}
+            </div>
             <div class="news-card-body">
               <p class="news-cat">{n.cat}</p>
               <h3>{n.titulo}</h3>
               <p>{n.resumen}</p>
               <div class="news-foot">
                 <span class="news-date">{n.fecha}</span>
-                <span class="news-read">Leer →</span>
+                {n.real
+                  ? <a href={n.link || `https://instagram.com/giaf.uanl`} target={n.link ? '_self' : '_blank'} rel="noopener" class="news-read">{n.linkText || 'Ver en Instagram →'}</a>
+                  : <span class="news-pronto">Pronto</span>
+                }
               </div>
             </div>
-          </a>
+          </div>
         ))}
+      </div>
+
+      <div class="noticias-ig-banner reveal">
+        <div class="ig-banner-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="ig-banner-title">Síguenos en Instagram</p>
+          <p class="ig-banner-sub">Las novedades del GIAF en tiempo real: sesiones, eventos y avances de proyectos.</p>
+        </div>
+        <a href="https://instagram.com/giaf.uanl" target="_blank" rel="noopener" class="btn-primary ig-banner-btn">@giaf.uanl →</a>
       </div>
     </div>
   </section>
 
 </BaseLayout>
+
+<style>
+.news-card-placeholder {
+  opacity: .75;
+  border-style: dashed;
+}
+.news-card-img.has-img {
+  padding: 0;
+  overflow: hidden;
+}
+.news-card-img.has-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.news-card:hover .news-card-img.has-img img {
+  transform: scale(1.05);
+}
+.news-pronto {
+  font-family: 'Space Mono', monospace;
+  font-size: .6rem; letter-spacing: .12em;
+  color: var(--muted); text-transform: uppercase;
+}
+.noticias-ig-banner {
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  margin-top: 3rem;
+  color: white;
+}
+.ig-banner-icon { color: rgba(255,255,255,.7); flex-shrink: 0; }
+.ig-banner-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 600; margin-bottom: .25rem;
+}
+.ig-banner-sub { font-size: .84rem; color: rgba(255,255,255,.6); }
+.ig-banner-btn { margin-left: auto; white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .noticias-ig-banner { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+  .ig-banner-btn { margin-left: 0; width: 100%; text-align: center; }
+}
+</style>
