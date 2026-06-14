@@ -437,11 +437,22 @@ const slides = [
     }
     .ig-counter { font-size: 1.2rem; }
     .ig-caption-title { font-size: 1.15rem; }
-    .ig-caption-desc { font-size: .85rem; }
+    .ig-caption-desc { font-size: .85rem; max-width: 100%; }
     .ig-dots { order: -1; }
     .ig-arrow { width: 40px; height: 40px; }
     .ig-arrow svg { width: 18px; height: 18px; }
-    .ig-hint { font-size: .58rem; padding: .4rem .7rem; }
+    .ig-prev { left: 10px; }
+    .ig-next { right: 10px; }
+    .ig-hint { font-size: .58rem; padding: .4rem .7rem; right: 10px; bottom: 10px; }
+    .ig-dotgrid { display: none; }
+  }
+  @media (max-width: 480px) {
+    .ig-wide-wrap { padding: 0 .75rem; }
+    .ig-frame { border-radius: 14px; }
+    .ig-arrow { width: 34px; height: 34px; }
+    .ig-arrow svg { width: 15px; height: 15px; }
+    .ig-progress { height: 3px; }
+    .ig-caption { margin-top: 1rem; }
   }
 
   /* ───────── BOX IA ───────── */
